@@ -43,7 +43,6 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',  # Django REST Framework
-    'drf_yasg',  # Swagger para documentación de API
     'micros',
     'pagos',
     'recargas',
