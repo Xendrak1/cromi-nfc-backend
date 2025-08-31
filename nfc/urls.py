@@ -19,13 +19,20 @@ from django.urls import path, include
 from micros.views import MicrosListView
 from pagos.views import PagosListView, CrearPagoView
 from recargas.views import RecargasListView, CrearRecargaView
+from django.http import JsonResponse
+
+
+def health(_request):
+	return JsonResponse({"status": "ok", "service": "cromi-nfc-backend"})
+
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('api/usuarios/', include('usuarios.urls')),
-    path('api/micros/', MicrosListView.as_view(), name='micros-list'),
-    path('api/pagos/', PagosListView.as_view(), name='pagos-list'),
-    path('api/pagos/crear/', CrearPagoView.as_view(), name='pagos-crear'),
-    path('api/recargas/', RecargasListView.as_view(), name='recargas-list'),
-    path('api/recargas/crear/', CrearRecargaView.as_view(), name='recargas-crear'),
+	path('', health),
+	path('admin/', admin.site.urls),
+	path('api/usuarios/', include('usuarios.urls')),
+	path('api/micros/', MicrosListView.as_view(), name='micros-list'),
+	path('api/pagos/', PagosListView.as_view(), name='pagos-list'),
+	path('api/pagos/crear/', CrearPagoView.as_view(), name='pagos-crear'),
+	path('api/recargas/', RecargasListView.as_view(), name='recargas-list'),
+	path('api/recargas/crear/', CrearRecargaView.as_view(), name='recargas-crear'),
 ]
